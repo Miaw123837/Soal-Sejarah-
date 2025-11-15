@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kucling Sejarah Indonesia</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212; /* Dark mode default */
+            color: #e0e0e0;
+            transition: background-color 0.5s ease, color 0.5s ease;
+            overflow-x: hidden;
+        }
+        .light-mode {
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+        h1, h2 {
+            margin-bottom: 20px;
+            animation: fadeIn 1s ease-in;
+        }
+        p {
+            line-height: 1.6;
+            animation: fadeIn 1.5s ease-in;
+        }
+        .page {
+            display: none;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            margin: 20px auto;
+            max-width: 700px;
+            animation: slideIn 0.8s ease-out;
+        }
+        .page.active {
+            display: block;
+        }
+        .page.koran {
+            background: #2c2c2c;
+            border: 2px solid #555;
+            font-family: 'Times New Roman', serif;
+            text-align: left;
+            padding: 30px;
+            position: relative;
+        }
+        .page.koran::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text fill="%23aaa" font-size="20" x="50" y="50" text-anchor="middle">Koran Sejarah</text></svg>') no-repeat center;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+        button:hover {
+            background: #0056b3;
+            transform: scale(1.05);
+        }
+        .nav {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+        }
+        .nav button {
+            display: block;
+            margin: 5px;
+        }
+        .login-form {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 400px;
+            margin: 100px auto;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #555;
+            border-radius: 5px;
+            background: #333;
+            color: #e0e0e0;
+        }
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        .slide-left {
+            animation: slideLeft 0.8s ease-out;
+        }
+        @keyframes slideLeft {
+            from { transform: translateX(0); }
+            to { transform: translateX(-100%); }
+        }
+        .toggle-mode {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="toggle-mode">
+        <button onclick="toggleMode()">Toggle Light/Dark</button>
+    </div>
+
+    <!-- Login Page -->
+    <div id="login" class="container">
+        <h1>Login ke Website Sejarah</h1>
+        <div class="login-form">
+            <input type="email" id="email" placeholder="Gmail" required>
+            <input type="text" id="token" placeholder="Token" required>
+            <button onclick="login()">Masuk</button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div id="main" style="display: none;">
+        <div class="nav">
+            <button onclick="prevPage()">Sebelumnya</button>
+            <button onclick="nextPage()">Selanjutnya</button>
+        </div>
+
+        <!-- Halaman 1: Penjajahan Belanda 1930 -->
+        <div id="page1" class="page active koran">
+            <h2>Halaman 1: Penjajahan Belanda di Tahun 1930</h2>
+            <p>Pada tahun 1930, Hindia Belanda (sekarang Indonesia) masih berada di bawah kekuasaan kolonial Belanda. Sistem tanam paksa (Cultuurstelsel) yang diperkenalkan pada 1830-an telah menyebabkan penderitaan besar bagi rakyat Indonesia. Pada 1930, terjadi pemberontakan besar seperti Pemberontakan PKI di Banten dan Priangan, yang dipicu oleh kemiskinan dan eksploitasi. Belanda menggunakan kekuatan militer untuk menekan pemberontakan, dengan korban jiwa ribuan orang. Ekonomi didominasi oleh perkebunan seperti tebu, kopi, dan karet, yang menguntungkan Belanda tapi merugikan petani lokal. Pendidikan dan kesehatan terbatas, dengan rasialisme yang kuat di mana orang Eropa mendapat prioritas. Ini adalah masa di mana nasionalisme Indonesia mulai bangkit, dengan tokoh seperti Sukarno dan Hatta mulai aktif.</p>
+        </div>
+
+        <!-- Halaman 2-5: 1942-1945, Penjajahan Jepang dan Romusha -->
+        <div id="page2" class="page koran">
+            <h2>Halaman 2: Pendudukan Jepang 1942-1945 - Awal Pendudukan</h2>
+            <p>Pada 8 Maret 1942, Jepang menduduki Indonesia setelah mengalahkan Belanda. Mereka menjanjikan kemerdekaan, tapi sebenarnya mengeksploitasi sumber daya. Romusha (buruh paksa) dimulai, di mana jutaan orang dipaksa kerja keras untuk proyek militer Jepang.</p>
+        </div>
+        <div id="page3" class="page koran">
+            <h2>Halaman 3: Romusha dan Penderitaan Rakyat</h2>
+            <p>Romusha menyebabkan kematian ratusan ribu orang akibat kelaparan, penyakit, dan kekerasan. Jepang membangun jalan, rel kereta, dan benteng untuk perang Asia-Pasifik. Nasionalisme Indonesia justru tumbuh karena Jepang mendorong bahasa Indonesia.</p>
+        </div>
+        <div id="page4" class="page koran">
+            <h2>Halaman 4: Propaganda dan Resistensi</h2>
+            <p>Jepang menggunakan propaganda untuk memenangkan hati rakyat, tapi kekejaman seperti pembantaian di Blitar dan Sumatera memicu resistensi. Tokoh seperti Soekarno bekerja sama dengan Jepang untuk kemerdekaan.</p>
+        </div>
+        <div id="page5" class="page koran">
+            <h2>Halaman 5: Akhir Pendudukan Jepang</h2>
+            <p>Pada Agustus 1945, Jepang menyerah setelah bom atom. Ini membuka jalan untuk proklamasi kemerdekaan Indonesia pada 17 Agustus 1945.</p>
+        </div>
+
+        <!-- Halaman 6-10: 1946-1950, Perjuangan Pahlawan -->
+        <div id="page6" class="page koran">
+            <h2>Halaman 6: Perjuangan 1946-1950 - Awal Kemerdekaan</h2>
+            <p>Setelah proklamasi, Belanda kembali dengan agresi militer. Perjuangan di Surabaya pada November 1945 melawan Inggris dan Belanda, dipimpin Bung Tomo, menunjukkan semangat rakyat.</p>
+        </div>
+        <div id="page7" class="page koran">
+            <h2>Halaman 7: Pertempuran Surabaya</h2>
+            <p>Pertempuran 10 November 1945 di Surabaya adalah salah satu yang paling heroik. Rakyat Indonesia melawan pasukan Sekutu dengan bambu runcing, menginspirasi nasionalisme.</p>
+        </div>
+        <div id="page8" class="page koran">
+            <h2>Halaman 8: Agresi Militer Belanda</h2>
+            <p>Pada 1947-1948, Belanda melancarkan agresi I dan II. Pahlawan seperti Sudirman memimpin gerilya. Konferensi Meja Bundar 1949 membawa pengakuan kedaulatan.</p>
+        </div>
+        <div id="page9" class="page koran">
+            <h2>Halaman 9: Peran Wanita dan Tokoh Lain</h2>
+            <p>Wanita seperti Kartini masa lalu, tapi di era ini, perempuan ikut perjuangan. Tokoh seperti Hatta dan Sjahrir berperan dalam diplomasi.</p>
+        </div>
+        <div id="page10" class="page koran">
+            <h2>Halaman 10: Pengakuan Kemerdekaan 1950</h2>
+            <p>Pada 27 Desember 1949, Belanda mengakui kedaulatan Indonesia. Tahun 1950, RIS menjadi NKRI. Perjuangan berlanjut melawan pemberontakan DI/TII.</p>
+        </div>
+    </div>
+
+    <script>
+        let currentPage = 1;
+        const totalPages = 10;
+
+        function toggleMode() {
+            document.body.classList.toggle('light-mode');
+        }
+
+        function login() {
+            const email = document.getElementById('email').value;
+            const token = document.getElementById('token').value;
+            if (email === 'Miaw123@gmail.com' && token === 'M14W') {
+                document.getElementById('login').style.display = 'none';
+                document.getElementById('main').style.display = 'block';
+            } else {
+                alert('Login gagal! Periksa email dan token.');
+            }
+        }
+
+        function showPage(pageNum) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active', 'slide-left'));
+
+            // Show current page with animation
+            const current = document.getElementById('page' + pageNum);
+            current.classList.add('active');
+            if (pageNum > 1) {
+                current.classList.add('slide-left');
+            }
+        }
+
+        function nextPage() {
+            if (currentPage < totalPages) {
+                currentPage++;
+            } else {
+                currentPage = 1; // Loop back to page 1
+            }
+            showPage(currentPage);
+        }
+
+        function prevPage() {
+            if (currentPage > 1) {
+                currentPage--;
+            } else {
+                currentPage = totalPages; // Loop to last page
+            }
+            showPage(currentPage);
+        }
+
+        // Initial setup
+        showPage(currentPage);
+    </script>
+</body>
+</html>
